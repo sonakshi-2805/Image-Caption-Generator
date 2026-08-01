@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+
+  backend:
+    build: ./backend
+    image: image-caption-backend
+    container_name: backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mongodb
+
+  server:
+    build: ./server
+    image: image-caption-server
+    container_name: server
+    ports:
+      - "5000:5000"
+
+  frontend:
+    build: ./frontend
+    image: image-caption-frontend
+    container_name: frontend
+    ports:
+      - "3000:3000"

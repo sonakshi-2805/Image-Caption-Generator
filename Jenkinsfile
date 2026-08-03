@@ -7,5 +7,13 @@ pipeline {
                 sh 'docker --version'
             }
         }
+        stage('Docker Compose Version') {
+
+            steps {
+
+                sh 'docker compose version'
+
+            }
+        }
     }
 }
